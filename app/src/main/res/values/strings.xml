@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ProjectZ</string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="location_cur">New Delhi</string>
+    <string name="name">Abhishek Singh</string>
 </resources>
