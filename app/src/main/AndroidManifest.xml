@@ -8,28 +8,27 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-       <!-- <activity android:name=".HomePage">
+        >
+       <activity
+           android:name="com.example.friends.projectz.RegisterActivity"
+           android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> -->
-
-        <activity android:name="com.example.friends.projectz.FlatDetail">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-                <!--<action android:name="com.example.friends.projectz.FlatDetail" />
-                <category android:name="android.intent.category.DEFAULT" /> -->
+                <action android:name="com.example.friends.projectz.RegisterActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
+            android:name="com.example.friends.projectz.FlatDetail"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+      <!--  <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity> -->
     </application>
 
 </manifest>

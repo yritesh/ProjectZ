@@ -1,5 +1,7 @@
 package com.example.friends.projectz;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -10,6 +12,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
 
 
 public class FlatDetail extends AppCompatActivity {
@@ -23,6 +27,13 @@ public class FlatDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
 
+        ImageView imageView7 = (ImageView) findViewById(R.id.imageView7);
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FlatDetail.this, RegisterActivity.class));
+            }
+        });
         slidingImage();
     }
 

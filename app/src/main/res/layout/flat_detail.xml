@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-6dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -54,10 +54,11 @@
                 app:layout_constraintTop_toTopOf="@+id/relativeLayout"
                 app:layout_constraintVertical_bias="0.086">
 
-                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="300dp"
                     android:layout_gravity="center"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="200dp">
@@ -89,68 +90,64 @@
                             android:layout_marginTop="5dp"
                             android:text="A-150,Block -A, ABC Nagar, new Delhi - 110096" />
 
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
+
+                        <ImageView
+                            android:id="@+id/imageView7"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            app:srcCompat="@drawable/map_icon" />
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/rent_icon_2"
+                            android:layout_marginRight="45dp"
+                            android:layout_marginEnd="45dp"
+                            android:layout_marginTop="12dp"
                             android:layout_below="@+id/textView4"
-                            android:layout_marginTop="10dp" >
+                            android:layout_alignRight="@+id/textView4"
+                            android:layout_alignEnd="@+id/textView4" />
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:paddingBottom="10dp"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
-                                android:paddingTop="10dp">
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            app:srcCompat="@drawable/deposit_icon"
+                            android:layout_alignTop="@+id/imageView8"
+                            android:layout_toRightOf="@+id/imageView8"
+                            android:layout_toEndOf="@+id/imageView8"
+                            android:layout_marginLeft="45dp"
+                            android:layout_marginStart="45dp" />
 
-                                <TextView
-                                    android:id="@+id/textView7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/textView8"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="5dp"
-                                    android:text="10,000"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                    android:textColor="@color/black" />
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="10,000"
+                            android:textColor="@color/black"
+                            android:layout_centerVertical="true"
+                            android:layout_alignLeft="@+id/imageView8"
+                            android:layout_alignStart="@+id/imageView8"
+                            android:layout_alignRight="@+id/imageView8"
+                            android:layout_alignEnd="@+id/imageView8" />
 
-                                <TextView
-                                    android:id="@+id/textView8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_centerHorizontal="true"
-                                    android:text="RENT FROM(Per Month)" />
-
-                                <TextView
-                                    android:id="@+id/textView9"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/textView7"
-                                    android:layout_centerHorizontal="true"
-                                    android:background="@drawable/line" />
-
-                                <TextView
-                                    android:id="@+id/textView10"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/textView11"
-                                    android:layout_centerHorizontal="true"
-                                    android:layout_marginTop="5dp"
-                                    android:text="20,000"
-                                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                                    android:textColor="@color/black" />
-
-                                <TextView
-                                    android:id="@+id/textView11"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/textView9"
-                                    android:layout_centerHorizontal="true"
-                                    android:text="SECURITY DEPOSIT(One Time)" />
-                            </RelativeLayout>
-                        </FrameLayout>
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/textView7"
+                            android:text="20,000"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:layout_alignLeft="@+id/imageView9"
+                            android:layout_alignStart="@+id/imageView9"
+                            android:layout_alignRight="@+id/imageView9"
+                            android:layout_alignEnd="@+id/imageView9" />
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
@@ -168,8 +165,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingBottom="10dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
                         android:paddingTop="10dp">
 
                         <TextView
@@ -179,8 +176,9 @@
                             android:layout_alignParentTop="true"
                             android:layout_centerHorizontal="true"
                             android:text="DETAILS"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="italic" />
 
                         <TextView
                             android:id="@+id/textView13"
@@ -191,8 +189,8 @@
                             android:layout_below="@+id/textView12"
                             android:layout_marginTop="15dp"
                             android:text="Size"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView14"
@@ -202,16 +200,15 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:text="1000sqft"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView15"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView13"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView18"
@@ -219,8 +216,8 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView15"
                             android:text="House ID"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView19"
@@ -230,16 +227,15 @@
                             android:layout_alignParentRight="true"
                             android:layout_below="@+id/textView15"
                             android:text="ABC1232"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView20"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView18"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView22"
@@ -249,8 +245,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/textView20"
                             android:text="Type"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView23"
@@ -260,16 +256,15 @@
                             android:layout_alignParentRight="true"
                             android:layout_below="@+id/textView20"
                             android:text="Apartment"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView24"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView22"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView25"
@@ -279,8 +274,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/textView24"
                             android:text="For"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView26"
@@ -290,16 +285,15 @@
                             android:layout_alignParentRight="true"
                             android:layout_below="@+id/textView24"
                             android:text="Family/Boys/Girls"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView27"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView26"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView28"
@@ -309,8 +303,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/textView27"
                             android:text="Bedrooms"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView29"
@@ -320,16 +314,15 @@
                             android:layout_alignParentRight="true"
                             android:layout_below="@+id/textView27"
                             android:text="Three"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView31"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView28"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView32"
@@ -339,8 +332,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/textView31"
                             android:text="Food Prefernce"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView33"
@@ -350,16 +343,15 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:text="None"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView34"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/textView33"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/line" />
+                            android:layout_centerHorizontal="true" />
 
                         <TextView
                             android:id="@+id/textView35"
@@ -369,8 +361,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_below="@+id/textView34"
                             android:text="Location"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
 
                         <TextView
                             android:id="@+id/textView36"
@@ -380,22 +372,179 @@
                             android:layout_alignParentRight="true"
                             android:layout_below="@+id/textView34"
                             android:text="ABC Nagar"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/black" />
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                            android:textColor="@color/dark_grey" />
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
 
-                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/card_view1"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="200dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            app:srcCompat="@drawable/tap_water" />
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            app:srcCompat="@drawable/parkint_icon" />
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="80dp"
+                            android:layout_height="50dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            app:srcCompat="@drawable/config_bed_icon" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/imageView4"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignRight="@+id/imageView4"
+                            android:layout_below="@+id/imageView4"
+                            android:gravity="center"
+                            android:text="All Day" />
+
+                        <TextView
+                            android:id="@+id/textView21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/imageView5"
+                            android:layout_centerHorizontal="true"
+                            android:text="one Covered" />
+
+                        <TextView
+                            android:id="@+id/textView30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_alignBottom="@+id/textView21"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:text="3 BHK Flat"  />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view2"
                     android:layout_width="fill_parent"
-                    android:layout_height="300dp"
-                    android:layout_below="@+id/card_view1"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_view3"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="200dp">
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="10dp">
 
+                        <TextView
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_centerHorizontal="true"
+                            android:text="OWNER's DETAIL"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/black"
+                            android:textStyle="italic" />
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/cardView"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_below="@+id/textView5"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="10dp"
+                            app:cardCornerRadius="25dp"
+                            card_view:cardBackgroundColor="@color/lightgrey">
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                app:srcCompat="@drawable/user_image_logo" />
+                        </android.support.v7.widget.CardView>
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cardView"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="7dp"
+                            android:text="Naam Kya hai bey" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textView6"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:text="9911193227"
+                            android:textColor="@color/black" />
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_below="@+id/textView16"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            app:cardCornerRadius="18dp"
+                            card_view:cardBackgroundColor="@color/green">
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                app:srcCompat="@drawable/call_icon" />
+                        </android.support.v7.widget.CardView>
+                    </RelativeLayout>
                 </android.support.v7.widget.CardView>
             </RelativeLayout>
         </RelativeLayout>

@@ -6,4 +6,6 @@
     <color name="lightgrey">#EBEDEF</color>
     <color name="black">#000000</color>
     <color name="black_trans">#60000000</color>
+    <color name="dark_grey">#2C3E50</color>
+    <color name="green">#2ECC71</color>
 </resources>
