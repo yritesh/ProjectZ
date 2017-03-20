@@ -1,5 +1,8 @@
 package com.example.friends.projectz;
 
+import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -10,6 +13,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class FlatDetail extends AppCompatActivity {
@@ -22,10 +31,21 @@ public class FlatDetail extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
+        //transparent scrollbar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
 
-        slidingImage();
+        TextView textView = (TextView) findViewById(R.id.textView2);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FlatDetail.this, RegisterActivity.class));
+            }
+        });
+       /* slidingImage();*/
     }
-
     //Sliding Images//
     public void slidingImage() {
         for (int i = 0; i < images.length; i++) {
