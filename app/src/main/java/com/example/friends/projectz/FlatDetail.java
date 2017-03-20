@@ -24,10 +24,11 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class FlatDetail extends AppCompatActivity implements View.OnClickListener {
+public class FlatDetail extends RegisterActivity implements View.OnClickListener {
     CardView callView;
     private static ViewPager mPager;
     private static int currentPage = 0;
@@ -39,8 +40,14 @@ public class FlatDetail extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
 
-
-        slidingImage();
+        TextView textView = (TextView)findViewById(R.id.textView2);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FlatDetail.this,RegisterActivity.class));
+            }
+        });
+        //slidingImage();
         callView = (CardView) findViewById(R.id.cardView4);
         callView.setOnClickListener(this);
         ImageView imageView7 = (ImageView) findViewById(R.id.imageView7);
