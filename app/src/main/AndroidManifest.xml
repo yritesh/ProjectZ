@@ -2,6 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.friends.projectz">
 
+    <permission-group
+        android:name="android.permission-group.PHONE_CALLS"
+        android:label="permgrouplab_phoneCalls"
+        android:description="@null" />
+
+    <permission
+        android:name="android.permission.READ_PHONE_STATE"
+        android:permissionGroup="android.permission-group.PHONE_CALLS"
+        android:protectionLevel="dangerous"
+        android:label="permlab_readPhoneState"
+        android:description="@null" />
+
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
