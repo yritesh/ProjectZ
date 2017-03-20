@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextInputLayout tilName,tilEmail,tilMobile,tilPass,tilAddress;
     EditText name,email,mobile,pass,address;
-    Button btn_signup = (Button)findViewById(R.id.btn_signup);
+    Button btn_signup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //transparent statusbar
@@ -47,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
+        btn_signup = (Button)findViewById(R.id.btn_signup);
         tilName = (TextInputLayout) findViewById(R.id.nameLayout);
         tilEmail = (TextInputLayout) findViewById(R.id.emailLayout);
         tilMobile = (TextInputLayout) findViewById(R.id.mobileLayout);
@@ -64,7 +64,22 @@ public class RegisterActivity extends AppCompatActivity
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                checkOtherReq("submit");
+                if(name.getText().toString().length()>5)
+                    if(address.getText().toString().length()>20)
+                        if(email.getText().toString().length()>0)
+                            if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+"))
+                                if(mobile.getText().toString().matches("[0-9]{10}"))
+                                    if(pass.getText().toString().length()>6) {
+                                        String query_type = "signup";
+                                        BackgroundWorker backgroundWorker = new BackgroundWorker(RegisterActivity.this);
+                                        backgroundWorker.execute(query_type,name.getText().toString(), email.getText().toString(), mobile.getText().toString(), pass.getText().toString(), address.getText().toString());
+                                    }
+                                    else tilPass.setError("Password must be atleast 6 characters long and this field can't be left blank");
+                                else tilMobile.setError("Please enter a valid mobile number ");
+                            else tilEmail.setError("Please enter a valid email id");
+                        else tilEmail.setError("Email field can't be left blank");
+                    else tilAddress.setError("Address must be atleast 20 characters long and this field can't be left blank");
+                else tilName.setError("Name must be atleast 6 characters long");
             }
         });
         name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -179,24 +194,6 @@ public class RegisterActivity extends AppCompatActivity
             case "input_address":if(address.getText().toString().length()>20)
                 tilAddress.setError(null);
             else tilAddress.setError("Address must be atleast 20 characters long and this field can't be left blank");
-                break;
-            case "submit":
-                if(name.getText().toString().length()>5)
-                    if(email.getText().toString().length()>0)
-                        if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+"))
-                            if(mobile.getText().toString().matches("[0-9]{10}"))
-                                if(pass.getText().toString().length()>6)
-                                    if(address.getText().toString().length()>20) {
-                                        String query_type = "signup";
-                                        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-                                        backgroundWorker.execute(query_type,name.getText().toString(), email.getText().toString(), mobile.getText().toString(), pass.getText().toString(), address.getText().toString());
-                                    }
-                                    else tilAddress.setError("Address must be atleast 20 characters long and this field can't be left blank");
-                                else tilPass.setError("Password must be atleast 6 characters long and this field can't be left blank");
-                            else tilMobile.setError("Please enter a valid mobile number ");
-                        else tilEmail.setError("Please enter a valid email id");
-                    else tilEmail.setError("Email field can't be left blank");
-                else tilName.setError("Name must be atleast 6 characters long");
                 break;
         }
     }
