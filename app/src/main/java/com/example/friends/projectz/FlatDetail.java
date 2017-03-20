@@ -83,6 +83,12 @@ public class FlatDetail extends AppCompatActivity implements View.OnClickListene
             case R.id.cardView4:
                 if(Build.VERSION.SDK_INT >= 23) {
                     permission();
+                } else {
+                    try {
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:9540959683")));
+                    } catch(SecurityException sex) {
+                        sex.printStackTrace();
+                    }
                 }
         }
     }
@@ -90,10 +96,8 @@ public class FlatDetail extends AppCompatActivity implements View.OnClickListene
     public void permission() {
         List<String> permissionsNeeded = new ArrayList<String>();
         final List<String> permissionsList = new ArrayList<String>();
-
         if (!addPermission(permissionsList, Manifest.permission.CALL_PHONE))
             permissionsNeeded.add("Phone");
-
         if (permissionsList.size() > 0) {
             if (permissionsNeeded.size() > 0) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -111,6 +115,8 @@ public class FlatDetail extends AppCompatActivity implements View.OnClickListene
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionsList.add(permission);
+            } else {
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:9540959683")));
             }
         }
         return true;
@@ -121,14 +127,10 @@ public class FlatDetail extends AppCompatActivity implements View.OnClickListene
             case 124: {
                 Map<String, Integer> perms = new HashMap<String, Integer>();
                 // Initial
-
                 perms.put(Manifest.permission.CALL_PHONE, PackageManager.PERMISSION_GRANTED);
-
-
                 for (int i = 0; i < permissions.length; i++)
                     perms.put(permissions[i], grantResult[i]);
                 if (perms.get(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
-
                     // Permission Granted
                     Toast.makeText(this, "All Permissions Granted!!", Toast.LENGTH_SHORT).show();
                     try {
