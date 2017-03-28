@@ -20,20 +20,21 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 
 public class RegisterActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextInputLayout tilName,tilEmail,tilMobile,tilPass,tilAddress;
     EditText name,email,mobile,pass,address;
+    RadioGroup userTypeGroup;
+    RadioButton usertype;
     Button btn_signup;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //transparent statusbar
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,6 +48,11 @@ public class RegisterActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
+        //transparent statusbar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
         btn_signup = (Button)findViewById(R.id.btn_signup);
         tilName = (TextInputLayout) findViewById(R.id.nameLayout);
         tilEmail = (TextInputLayout) findViewById(R.id.emailLayout);
@@ -59,6 +65,9 @@ public class RegisterActivity extends AppCompatActivity
         mobile = (EditText)findViewById(R.id.input_mobile);
         pass = (EditText)findViewById(R.id.input_password);
         address = (EditText)findViewById(R.id.input_address);
+        userTypeGroup = (RadioGroup)findViewById(R.id.radioGroup);
+        int selectedId = userTypeGroup.getCheckedRadioButtonId();
+        usertype = (RadioButton)findViewById(selectedId);
 
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -67,12 +76,12 @@ public class RegisterActivity extends AppCompatActivity
                 if(name.getText().toString().length()>5)
                     if(address.getText().toString().length()>20)
                         if(email.getText().toString().length()>0)
-                            if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+"))
+                            if(email.getText().toString().trim().matches(emailPattern))
                                 if(mobile.getText().toString().matches("[0-9]{10}"))
                                     if(pass.getText().toString().length()>6) {
                                         String query_type = "signup";
                                         BackgroundWorker backgroundWorker = new BackgroundWorker(RegisterActivity.this);
-                                        backgroundWorker.execute(query_type,name.getText().toString(), email.getText().toString(), mobile.getText().toString(), pass.getText().toString(), address.getText().toString());
+                                        backgroundWorker.execute(query_type,name.getText().toString(), email.getText().toString().trim(), mobile.getText().toString(), pass.getText().toString(), address.getText().toString(), usertype.getText().toString());
                                     }
                                     else tilPass.setError("Password must be atleast 6 characters long and this field can't be left blank");
                                 else tilMobile.setError("Please enter a valid mobile number ");
@@ -82,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity
                 else tilName.setError("Name must be atleast 6 characters long");
             }
         });
+        /*
         name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -112,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity
                 checkOtherReq(String.valueOf(v.getId()));
             }
         });
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -163,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity
                 checkOtherReq(String.valueOf(v.getId()));
             }
         });
-    }*/
+    }
 
 
     private void checkOtherReq(String type){
@@ -176,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity
                 break;
             case "input_email":if(email.getText().toString().length()>0)
             {
-                if(email.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+"))
+                if(email.getText().toString().trim().matches(emailPattern))
                     tilEmail.setError(null);
                 else tilEmail.setError("Please enter a valid email id");
             }
@@ -196,7 +206,7 @@ public class RegisterActivity extends AppCompatActivity
             else tilAddress.setError("Address must be atleast 20 characters long and this field can't be left blank");
                 break;
         }
-    }
+    }*/
 
 
     @SuppressWarnings("StatementWithEmptyBody")

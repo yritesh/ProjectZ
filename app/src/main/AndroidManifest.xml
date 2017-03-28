@@ -3,6 +3,7 @@
     package="com.example.friends.projectz">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-       <!-- <activity android:name=".HomePage">
+       <activity android:name=".HomePage">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.example.friends.projectz.HomePage" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity> -->
+        </activity>
 
         <activity android:name="com.example.friends.projectz.FlatDetail">
             <intent-filter>

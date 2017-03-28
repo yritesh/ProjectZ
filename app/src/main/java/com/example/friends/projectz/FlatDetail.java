@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 import android.os.Handler;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -39,8 +40,9 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
-
-        TextView textView = (TextView)findViewById(R.id.textView2);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        TextView textView = (TextView)findViewById(R.id.textView11);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +58,7 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
     }
 
     //Sliding Images//
-    public void slidingImage() {
+   /*public void slidingImage() {
         for (int i = 0; i < images.length; i++) {
             ImagesArray.add(images[i]);
         }
@@ -82,7 +84,7 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
             }
         }, 3000, 3000);
 
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
@@ -139,7 +141,7 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
                     // Permission Granted
                     Toast.makeText(this, "All Permissions Granted!!", Toast.LENGTH_SHORT).show();
                     try {
-                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:9540959683")));
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:8506807268")));
                     } catch(SecurityException sex) {
                         sex.printStackTrace();
                     }
