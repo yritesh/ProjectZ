@@ -9,4 +9,5 @@
     <string name="location_cur">New Delhi</string>
     <string name="name">Abhishek Singh</string>
     <string name="signup">Sign Up</string>
+    <string name="rs">\u20B9</string>
 </resources>
