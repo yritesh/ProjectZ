@@ -364,7 +364,7 @@
                             android:layout_alignBottom="@+id/textView32"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
-                            android:text="None"
+                            android:text="Vegetarians"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                             android:textColor="@color/dark_grey" />
 
