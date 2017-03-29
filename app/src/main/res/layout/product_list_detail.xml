@@ -12,6 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="match_parent"
@@ -24,28 +25,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imageView10"
-                android:paddingTop="3dp"
-                android:paddingLeft="10dp">
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp">
 
                 <TextView
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:text="3 BHK Appartment"
-                    android:textColor="@color/black"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                    android:layout_alignParentStart="true" />
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView7"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    android:text="A-150,Block -A, ABC Nagar, new Delhi - 110096" />
+                    android:text="A-150,Block -A, ABC Nagar, new Delhi - 110096"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
 
             </RelativeLayout>
-
 
 
         </RelativeLayout>

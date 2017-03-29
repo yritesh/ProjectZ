@@ -1,6 +1,7 @@
 package com.example.friends.projectz;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.Image;
@@ -20,7 +21,9 @@ import java.util.TimerTask;
 
 import android.os.Handler;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -35,11 +38,17 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
     private static int currentPage = 0;
     private static final Integer[] images = {R.drawable.photo1, R.drawable.photo2, R.drawable.photo3};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
-
+    private AlertDialog alertDialog;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
+        Intent callingIntent = getIntent();
+        String alphaTest = callingIntent.getExtras().getString("mainObject");
+        alertDialog = new AlertDialog.Builder(FlatDetail.this).create();
+        alertDialog.setTitle("Data from internal_query.php (JSON)");
+        alertDialog.setMessage(alphaTest);
+        alertDialog.show();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         TextView textView = (TextView)findViewById(R.id.textView11);
