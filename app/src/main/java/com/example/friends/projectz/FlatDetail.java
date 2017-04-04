@@ -31,6 +31,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 
 public class FlatDetail extends RegisterActivity implements View.OnClickListener {
     CardView callView;
@@ -39,6 +42,7 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
     private static final Integer[] images = {R.drawable.photo1, R.drawable.photo2, R.drawable.photo3};
     private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
     private AlertDialog alertDialog;
+    private TextView toRegisterAct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,6 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
         callView.setOnClickListener(this);
         ImageView imageView7 = (ImageView) findViewById(R.id.imageView7);
         imageView7.setOnClickListener(this);
-
     }
 
     //Sliding Images//
