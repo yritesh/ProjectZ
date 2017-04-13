@@ -31,7 +31,7 @@ import java.net.URLEncoder;
     @Override
     protected String doInBackground(String... params) {
 
-        String login_url = "http://192.168.0.103/internal_query.php";
+        String login_url = "http://192.168.0.101/internal_query.php";
         String result = null;
         try {
             URL url = new URL(login_url);
@@ -73,8 +73,6 @@ import java.net.URLEncoder;
     }
     @Override
     protected void onPostExecute(String result) {
-
-        Log.d("alphabetagamma",result);
         Intent intent = new Intent(context, ProductList.class);
         intent.putExtra("mainObject",result.toString());
         context.startActivity(intent);
