@@ -4,85 +4,92 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.os.Handler;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import org.w3c.dom.Text;
 
 
-public class FlatDetail extends FragmentActivity implements View.OnClickListener {
-    CardView callView;
-    private static ViewPager mPager;
-    private static int currentPage = 0;
-    private static final Integer[] images = {R.drawable.photo1, R.drawable.photo2, R.drawable.photo3};
-    private ArrayList<Integer> ImagesArray = new ArrayList<Integer>();
-    private AlertDialog alertDialog;
-    private TextView toRegisterAct;
+
+public class FlatDetail extends RegisterActivity implements View.OnClickListener {
+    private CardView callView;
+    private TextView noOfRooms, address, rent, deposite, size, houseId, type, houseFor, bedrooms, bathrooms, foodPrefernce, location,
+            ownersName, ownerNumber;
+    JSONObject jsonObject;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
-        Intent callingIntent = getIntent();
-        String alphaTest = callingIntent.getExtras().getString("mainObject");
-        alertDialog = new AlertDialog.Builder(FlatDetail.this).create();
-        alertDialog.setTitle("Data from internal_query.php (JSON)");
-        alertDialog.setMessage(alphaTest);
-        alertDialog.show();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        TextView textView = (TextView)findViewById(R.id.textView11);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FlatDetail.this,RegisterActivity.class));
-            }
-        });
-        //slidingImage();
+        noOfRooms = (TextView) findViewById(R.id.textView11);
+        address = (TextView) findViewById(R.id.textView10);
+        rent = (TextView) findViewById(R.id.textView4);
+        deposite = (TextView) findViewById(R.id.textView38);
+        size = (TextView) findViewById(R.id.textView14);
+        houseId = (TextView) findViewById(R.id.textView19);
+        type = (TextView) findViewById(R.id.textView23);
+        houseFor = (TextView) findViewById(R.id.textView26);
+        bedrooms = (TextView) findViewById(R.id.textView29);
+        bathrooms = (TextView) findViewById(R.id.textViewbathno);
+        foodPrefernce = (TextView) findViewById(R.id.textView33);
+        location = (TextView) findViewById(R.id.textView36);
+        ownersName = (TextView) findViewById(R.id.textView6);
+        ownerNumber = (TextView) findViewById(R.id.textView16);
+
         callView = (CardView) findViewById(R.id.cardView4);
         callView.setOnClickListener(this);
         ImageView imageView7 = (ImageView) findViewById(R.id.imageView7);
         imageView7.setOnClickListener(this);
-    }
 
-    //Sliding Images//
-   /*public void slidingImage() {
-        for (int i = 0; i < images.length; i++) {
-            ImagesArray.add(images[i]);
+        try {
+            jsonObject = new JSONObject(getIntent().getStringExtra("mainObject"));
+            noOfRooms.setText(jsonObject.getString("bedroomCount")+"BHK"+" "+jsonObject.getString("buildingType"));
+            address.setText(jsonObject.getString("postedByLocation"));
+            rent.setText(jsonObject.getString("rent"));
+            deposite.setText(jsonObject.getString("deposit"));
+            size.setText(jsonObject.getString("sizeSqft")+"Sqft");
+            type.setText(jsonObject.getString("buildingType"));
+            houseFor.setText(jsonObject.getString("availableFor"));
+            bedrooms.setText(jsonObject.getString("bedroomCount"));
+            bathrooms.setText(jsonObject.getString("bathroomCount"));
+            foodPrefernce.setText(jsonObject.getString("foodPreferences"));
+            location.setText(jsonObject.getString("locality"));
+            ownersName.setText(jsonObject.getString("postedByName"));
+            ownerNumber.setText(jsonObject.getString("postedByMobile"));
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPager.setAdapter(new SlidingImageAdapter(FlatDetail.this, ImagesArray));
-
-        final Handler handler = new Handler();
-        final Runnable Update = new Runnable() {
-
-            @Override
-            public void run() {
-                if (currentPage > images.length - 1) {
-                    currentPage = 0;
-                }
-                mPager.setCurrentItem(currentPage++, true);
-            }
-        };
-        Timer swipeTimer = new Timer();
-        swipeTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 3000, 3000);
-
-    }*/
-
+        System.out.println("Json Object--------------->>>"+jsonObject);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -91,7 +98,7 @@ public class FlatDetail extends FragmentActivity implements View.OnClickListener
                     permission();
                 } else {
                     try {
-                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:9540959683")));
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel: "+ownerNumber.getText().toString())));
                     } catch(SecurityException sex) {
                         sex.printStackTrace();
                     }
@@ -122,7 +129,7 @@ public class FlatDetail extends FragmentActivity implements View.OnClickListener
             if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
                 permissionsList.add(permission);
             } else {
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:9540959683")));
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ownerNumber.getText().toString())));
             }
         }
         return true;
@@ -140,7 +147,7 @@ public class FlatDetail extends FragmentActivity implements View.OnClickListener
                     // Permission Granted
                     Toast.makeText(this, "All Permissions Granted!!", Toast.LENGTH_SHORT).show();
                     try {
-                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:8506807268")));
+                        startActivity(new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ownerNumber.getText().toString())));
                     } catch(SecurityException sex) {
                         sex.printStackTrace();
                     }
