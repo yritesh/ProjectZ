@@ -1,23 +1,15 @@
 package com.example.friends.projectz;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-
-
 import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
@@ -62,7 +55,7 @@ public class BackgroundWorker extends AsyncTask<String,String,String> {
 
                 String username = params[1];
                 String password = params[2];
-                String login_url = "http://192.168.0.101/login.php";
+                String login_url = "http://192.168.0.100/login.php";
                 try {
                     URL url = new URL(login_url);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -102,7 +95,7 @@ public class BackgroundWorker extends AsyncTask<String,String,String> {
                 String pass = params[4];
                 String address = params[5];
                 String usertype = params[6];
-                String login_url = "http://192.168.0.103/signup.php";
+                String login_url = "http://192.168.43.105/signup.php";
                 try {
                     URL url = new URL(login_url);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

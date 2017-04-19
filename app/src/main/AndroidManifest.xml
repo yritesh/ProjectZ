@@ -4,8 +4,8 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCg_6kiqC0kLwEsEu_svqI4etoNi1hP_TY" />
+
         <activity android:name=".HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,14 +25,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
         <activity android:name=".FlatDetail">
             <intent-filter>
                 <action android:name="com.example.friends.projectz.FlatDetail" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
         </activity>
+
+
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
@@ -39,13 +46,32 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
         <activity android:name=".ProductList">
             <intent-filter>
                 <action android:name="com.example.friends.projectz.ProductList" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-
             </intent-filter>
+        </activity>
+
+
+        <activity android:name=".LoginSignupActivity">
+        <intent-filter>
+            <action android:name="com.example.friends.projectz.LoginSignupActivity" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+
+
+        <activity android:name=".SignupForm">
+            <intent-filter>
+            <action android:name="com.example.friends.projectz.SignupForm" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
         </activity>
     </application>
 

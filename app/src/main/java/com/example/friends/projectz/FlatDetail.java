@@ -4,38 +4,24 @@ import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.os.Handler;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
-public class FlatDetail extends RegisterActivity implements View.OnClickListener {
+public class FlatDetail extends FragmentActivity implements View.OnClickListener {
     CardView callView;
     private static ViewPager mPager;
     private static int currentPage = 0;
@@ -53,8 +39,7 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
         alertDialog.setTitle("Data from internal_query.php (JSON)");
         alertDialog.setMessage(alphaTest);
         alertDialog.show();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
         TextView textView = (TextView)findViewById(R.id.textView11);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override

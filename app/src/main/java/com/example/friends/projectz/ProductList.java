@@ -2,12 +2,12 @@ package com.example.friends.projectz;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-public class ProductList extends AppCompatActivity {
+public class ProductList extends FragmentActivity {
     private ImageView imageView10;
     private String usernameSession;
     private AlertDialog alertDialog;
@@ -21,6 +21,7 @@ public class ProductList extends AppCompatActivity {
         fun();
         Intent callingIntent = getIntent();
         String alphaTest = callingIntent.getExtras().getString("mainObject");
+
         alertDialog = new AlertDialog.Builder(ProductList.this).create();
         alertDialog.setTitle("Data from internal_query.php (JSON)");
         alertDialog.setMessage(alphaTest);

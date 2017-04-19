@@ -1,19 +1,11 @@
 package com.example.friends.projectz;
 
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -27,8 +19,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import static android.content.Context.NOTIFICATION_SERVICE;
-
 /**
  * Created by Friends on 29-03-2017.
  */
@@ -36,17 +26,20 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class FlatDetailsBackground  extends AsyncTask<String,String,String> {
     private AlertDialog alertDialog;
     private Context context;
+    private SharedPreferences pref;
+    private String usernameSession;
     FlatDetailsBackground(Context ctx) {
         context = ctx;
-
+        pref = ctx.getSharedPreferences(BackgroundWorker.MyPref, Context.MODE_PRIVATE);
+        usernameSession = pref.getString("usernameSession", "");
     }
     @Override
     protected String doInBackground(String... params) {
-        String login_url = "http://192.168.0.103/internal_query.php";
+        String login_url = "http://192.168.43.105/internal_query.php";
         String result = null;
         try {
 
-            Log.d("ERRRRROOOOORRRRRRR=====",params[0]);
+            Log.d("ERRRRROOOOORRRRRRR=====",params[0]+params[1]+usernameSession);
             URL url = new URL(login_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
@@ -54,7 +47,7 @@ public class FlatDetailsBackground  extends AsyncTask<String,String,String> {
             httpURLConnection.setDoInput(true);
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            String post_data = URLEncoder.encode("trigger", "UTF-8") + "=" + URLEncoder.encode(params[0], "UTF-8") + "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8") + "&" + URLEncoder.encode("product_id", "UTF-8") + "=" + URLEncoder.encode(params[2], "UTF-8");
+            String post_data = URLEncoder.encode("trigger", "UTF-8") + "=" + URLEncoder.encode(params[0], "UTF-8") + "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(usernameSession, "UTF-8") + "&" + URLEncoder.encode("product_id", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
