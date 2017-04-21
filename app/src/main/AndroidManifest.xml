@@ -20,13 +20,11 @@
 
         <activity android:name=".HomePage">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.example.friends.projectz.HomePage" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".FlatDetail">
             <intent-filter>
                 <action android:name="com.example.friends.projectz.FlatDetail" />
@@ -34,8 +32,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
@@ -46,8 +42,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".ProductList">
             <intent-filter>
                 <action android:name="com.example.friends.projectz.ProductList" />
@@ -55,24 +49,29 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".LoginSignupActivity">
-        <intent-filter>
-            <action android:name="com.example.friends.projectz.LoginSignupActivity" />
+            <intent-filter>
+                <action android:name="com.example.friends.projectz.LoginSignupActivity" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
-
-
         <activity android:name=".SignupForm">
             <intent-filter>
-            <action android:name="com.example.friends.projectz.SignupForm" />
+                <action android:name="com.example.friends.projectz.SignupForm" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-        </intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+        <activity android:name=".SignInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ProfilePage" />
+        <activity android:name=".AddProperty"></activity>
     </application>
 
 </manifest>

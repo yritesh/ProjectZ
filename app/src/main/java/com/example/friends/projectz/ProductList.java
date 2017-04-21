@@ -2,10 +2,8 @@ package com.example.friends.projectz;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
+import android.support.v4.app.FragmentActivity;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -13,7 +11,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ProductList extends AppCompatActivity {
+public class ProductList extends FragmentActivity {
     ArrayList<ProductDetailPojo> list;
     private ProductListAdapter adapter;
     private String usernameSession;

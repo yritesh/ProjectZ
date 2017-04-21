@@ -1,43 +1,28 @@
 package com.example.friends.projectz;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 
-public class FlatDetail extends RegisterActivity implements View.OnClickListener {
+public class FlatDetail extends FragmentActivity implements View.OnClickListener {
     private CardView callView;
     private TextView noOfRooms, address, rent, deposite, size, houseId, type, houseFor, bedrooms, bathrooms, foodPrefernce, location,
             ownersName, ownerNumber;
@@ -47,8 +32,6 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flat_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         noOfRooms = (TextView) findViewById(R.id.textView11);
         address = (TextView) findViewById(R.id.textView10);
@@ -90,6 +73,8 @@ public class FlatDetail extends RegisterActivity implements View.OnClickListener
         }
         System.out.println("Json Object--------------->>>"+jsonObject);
     }
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){

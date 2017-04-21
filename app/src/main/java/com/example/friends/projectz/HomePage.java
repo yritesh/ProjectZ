@@ -11,6 +11,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -19,7 +20,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,6 +37,7 @@ import com.google.maps.android.ui.IconGenerator;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,25 +64,95 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
     private Marker mMarker;
     private ImageView profileImage;
     private AlertDialog alertDialog;
+    private String city, credentials;
+    private Uri photoUri;
+    private TextView cityCurrent, addCurrent;
+    private ImageButton imageButton1, imageButton2, imageButton3, imageButton4, imageButton5, imageButton6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        Intent intent = getIntent();
+        credentials = intent.getStringExtra("credentials");
+        List<String> cArray = Arrays.asList(credentials.split(","));
+        photoUri = Uri.parse(cArray.get(5));
+
+        cityCurrent = (TextView)findViewById(R.id.cityCurrent);
+        addCurrent = (TextView)findViewById(R.id.addCurrent);
+
+        imageButton1 = (ImageButton)findViewById(R.id.imageButton1);
+        imageButton2 = (ImageButton)findViewById(R.id.imageButton2);
+        imageButton3 = (ImageButton)findViewById(R.id.imageButton3);
+        imageButton4 = (ImageButton)findViewById(R.id.imageButton4);
+        imageButton5 = (ImageButton)findViewById(R.id.imageButton5);
+        imageButton6 = (ImageButton)findViewById(R.id.imageButton6);
+
+        imageButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(28.704059,77.102490);
+                imageClick(x);
+            }
+        });
+        imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(27.176670,78.008075);
+                imageClick(x);
+            }
+        });
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(17.385044,78.486671);
+                imageClick(x);
+            }
+        });
+        imageButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(27.492413,77.673673);
+                imageClick(x);
+            }
+        });
+        imageButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(12.971599,77.594563);
+                imageClick(x);
+            }
+        });
+        imageButton6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng x = new LatLng(22.572646,88.363895);
+                imageClick(x);
+            }
+        });
+        pref = getSharedPreferences(BackgroundSigninSignup.MyPref, Context.MODE_PRIVATE);
+        usernameSession = pref.getString("usernameSession", "");
+        System.out.println("--------------------------------usernameeeeee"+usernameSession);
+
         alertDialog = new AlertDialog.Builder(HomePage.this,R.style.MyAlertDialogStyle).setPositiveButton("OK", null).setNegativeButton("Cancel", null).create();
-        alertDialog.setTitle("Status");
+        alertDialog.setTitle("Profile");
         profileImage = (ImageView)findViewById(R.id.profileImage);
+        Picasso.with(this).load(photoUri).into(profileImage);
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pref = getSharedPreferences(BackgroundWorker.MyPref, Context.MODE_PRIVATE);
-                usernameSession = pref.getString("usernameSession", "");
                 if(usernameSession != ""){
-                    alertDialog.setMessage("Username: " + usernameSession);
-                    alertDialog.show();
+                    try {
+                        Intent intent1 = new Intent(HomePage.this, ProfilePage.class);
+                        intent1.putExtra("credentials",credentials);
+                        startActivity(intent1);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
                 else {
-                    startActivity(new Intent(HomePage.this, LoginSignupActivity.class));
+
+                    startActivity(new Intent(HomePage.this, SignInActivity.class));
                 }
             }
         });
@@ -208,6 +282,8 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
             String knownName = addresses.get(0).getFeatureName();
             combination = address + "," + city + "," + state + "," + country + "," + postalCode + "," + knownName + "," + lat + "," + lon;
 
+            cityCurrent.setText(city);
+            addCurrent.setText(state+", "+country);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -234,15 +310,27 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
         } else {
 
             String combination = getLocation();
-            List<String> locationArray = Arrays.asList(combination.split(","));
+            System.out.println("-----------------------"+combination);
+            if(combination == null){
+                city = "Delhi";
+            }else {
+                List<String> locationArray = Arrays.asList(combination.split(","));
+                city = locationArray.get(1);
+            }
             RequestParams params = new RequestParams();
             params.put("trigger", "listByCity");
-            params.put("city", locationArray.get(1));
+            params.put("city", city);
             AsyncHttpClient client = new AsyncHttpClient();
-            client.post("http://192.168.43.105/internal_query.php", params, new AsyncHttpResponseHandler() {
+            client.post("http://192.168.0.100/internal_query.php", params, new AsyncHttpResponseHandler() {
 
                 @Override
                 public void onSuccess(int statusCode, String response) {
+
+                    try{
+                        System.out.println("-----------------------"+statusCode + "," + response);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray jsonArray = jsonObject.getJSONArray("tag");
@@ -298,10 +386,13 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
             });
 
             LatLng alpha = new LatLng(lat, lon);
+            System.out.println(alpha);
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(alpha,10));
 
     }
 
 }
-
+public void imageClick(LatLng alpha){
+    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(alpha,10));
+    }
 }
