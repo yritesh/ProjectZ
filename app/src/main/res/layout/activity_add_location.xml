@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/map_icon" />
+
+    <Button
+android:id="@+id/placePick"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Choose Location" />
+
+    <EditText
+        android:id="@+id/mName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Property name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/mAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/mAttributions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lat, Lon"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/bedroomCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bedroom count"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/bathroomCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Bathroom count"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/foodPref"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Food Preferences"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/mobileNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Phone number"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/areaSqft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Area (in sqft)"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/rentInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Rent"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/depositInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Deposit"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/postProperty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Property" />
+
+    <TextView
+        android:id="@+id/hiddenView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:visibility="gone"/>
+
+</LinearLayout>
+</ScrollView>

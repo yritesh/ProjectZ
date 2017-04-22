@@ -16,7 +16,10 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCg_6kiqC0kLwEsEu_svqI4etoNi1hP_TY" />
+            android:value="AIzaSyDN-eK9fvPKV5qUEvPaKRU-yr4ez956nCY" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
         <activity android:name=".HomePage">
             <intent-filter>
@@ -70,8 +73,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfilePage" />
-        <activity android:name=".AddProperty"></activity>
+        <activity android:name=".ProfilePage">
+            <intent-filter>
+                <action android:name="com.example.friends.projectz.ProfilePage" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddProperty">
+            <intent-filter>
+                <action android:name="com.example.friends.projectz.AddProperty" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AddLocation">
+            <intent-filter>
+                <action android:name="com.example.friends.projectz.AddLocation" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class ProfilePage extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView titleImage, backHome;
     private TextView nameProfile, emailProfile, usernameProfile;
+    private Button btnAddproperty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,7 @@ public class ProfilePage extends AppCompatActivity {
         emailProfile = (TextView)findViewById(R.id.emailProfile);
         usernameProfile = (TextView)findViewById(R.id.usernameProfile);
         backHome = (ImageView)findViewById(R.id.backHome);
+        btnAddproperty = (Button)findViewById(R.id.btnAdd);
 
         nameProfile.setText(credentialsArray.get(1));
         emailProfile.setText(credentialsArray.get(0));
@@ -58,6 +61,13 @@ public class ProfilePage extends AppCompatActivity {
                 Intent intent = new Intent(ProfilePage.this, HomePage.class);
                 intent.putExtra("credentials", credentials);
                 startActivity(intent);
+            }
+        });
+
+        btnAddproperty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfilePage.this, AddLocation.class));
             }
         });
 
