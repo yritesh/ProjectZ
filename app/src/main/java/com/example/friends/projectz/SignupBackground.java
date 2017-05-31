@@ -53,7 +53,7 @@ public class SignupBackground extends AsyncTask<String, Integer, String> {
                 String email = params[0];
                 String mobile = params[1];
                 String pass = params[2];
-                String login_url = "http://192.168.43.105/signup.php";
+                String login_url = "http://sumeetfoundation.org/projectz/signup.php";
                 try {
                     URL url = new URL(login_url);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

@@ -45,7 +45,7 @@ public class BackgroundSigninSignup extends AsyncTask<String, Integer, String> {
         mParams.put("email", credentials.get(0));
         mParams.put("array", credentials.get(1));
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://192.168.0.100/internal_query.php", mParams, new AsyncHttpResponseHandler() {
+        client.post("http://sumeetfoundation.org/projectz/internal_query.php", mParams, new AsyncHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, String response) {

@@ -321,7 +321,7 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
             params.put("trigger", "listByCity");
             params.put("city", city);
             AsyncHttpClient client = new AsyncHttpClient();
-            client.post("http://192.168.0.100/internal_query.php", params, new AsyncHttpResponseHandler() {
+            client.post("http://sumeetfoundation.org/projectz/internal_query.php", params, new AsyncHttpResponseHandler() {
 
                 @Override
                 public void onSuccess(int statusCode, String response) {

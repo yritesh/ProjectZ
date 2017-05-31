@@ -50,7 +50,7 @@ public class loginBackground extends AsyncTask<String, Integer, String> {
         pref = context.getSharedPreferences(MyPref, Context.MODE_PRIVATE); // 0 - for private mode
         editor = pref.edit();
 
-        String login_url = "http://192.168.43.105/login.php";
+        String login_url = "http://sumeetfoundation.org/projectz/login.php";
         try {
             URL url = new URL(login_url);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

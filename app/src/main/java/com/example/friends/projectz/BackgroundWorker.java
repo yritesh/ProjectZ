@@ -55,7 +55,7 @@ public class BackgroundWorker extends AsyncTask<String,String,String> {
 
                 String username = params[1];
                 String password = params[2];
-                String login_url = "http://192.168.0.100/login.php";
+                String login_url = "http://sumeetfoundation.org/projectz/login.php";
                 try {
                     URL url = new URL(login_url);
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

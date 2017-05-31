@@ -35,7 +35,7 @@ public class FlatDetailsBackground  extends AsyncTask<String,String,String> {
     }
     @Override
     protected String doInBackground(String... params) {
-        String login_url = "http://192.168.0.100/internal_query.php";
+        String login_url = "http://sumeetfoundation.org/projectz/internal_query.php";
         String result = null;
         try {
 
