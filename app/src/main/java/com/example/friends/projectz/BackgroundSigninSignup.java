@@ -55,7 +55,8 @@ public class BackgroundSigninSignup extends AsyncTask<String, Integer, String> {
 
                     JSONArray jsonArray = jsonObject.getJSONArray("tag");
 
-                        final JSONObject rec = jsonArray.getJSONObject(0);
+                    final JSONObject rec = jsonArray.getJSONObject(0);
+                    System.out.println("--------------------------------usernameeeeee"+response);
 
                         editor.putString("usernameSession", rec.getString("usernameSession"));
                         editor.commit();

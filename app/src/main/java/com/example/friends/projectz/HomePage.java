@@ -141,7 +141,7 @@ public class HomePage extends FragmentActivity implements LocationListener, OnMa
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(usernameSession != ""){
+                if(usernameSession != null){
                     try {
                         Intent intent1 = new Intent(HomePage.this, ProfilePage.class);
                         intent1.putExtra("credentials",credentials);
